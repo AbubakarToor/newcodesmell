@@ -1,0 +1,46 @@
+public class OrderProcessor {
+    public void processOrder(String orderId, String customerName, String customerAddress, String paymentMethod, 
+                             String productCode, int quantity, double discount) {
+        // Duplicate Code: Checking if order ID is valid (could be extracted)
+        if (orderId == null || orderId.isEmpty()) {
+            System.out.println("Invalid order ID.");
+            return;
+        }
+
+        // Complex Condition: Checking product availability
+        if (productCode == null || productCode.isEmpty() || quantity <= 0) {
+            System.out.println("Invalid product details.");
+            return;
+        }
+
+        // Long Method: Processing payment, calculating total, updating inventory, etc.
+        double price = getProductPrice(productCode);
+        double total = (price * quantity) - discount;
+        
+        // Duplicate Code: Checking if payment method is valid (could be extracted)
+        if (paymentMethod == null || paymentMethod.isEmpty()) {
+            System.out.println("Invalid payment method.");
+            return;
+        }
+
+        // Processing payment
+        if (paymentMethod.equals("credit")) {
+            System.out.println("Processing credit payment...");
+        } else if (paymentMethod.equals("paypal")) {
+            System.out.println("Processing PayPal payment...");
+        } else if (paymentMethod.equals("cash")) {
+            System.out.println("Processing cash payment...");
+        } else {
+            System.out.println("Invalid payment option.");
+            return;
+        }
+
+        // Completing order
+        System.out.println("Order for " + customerName + " is processed. Total: $" + total);
+    }
+
+    private double getProductPrice(String productCode) {
+        // Assume price retrieval logic here
+        return 10.0;
+    }
+}
